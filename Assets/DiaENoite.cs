@@ -20,7 +20,7 @@ public class ClasseNuvens {
    public float OpacidadeHorizonte = 50; 
    public Shader ShaderDoObjeto;
    public Texture TexturaShader;
-   [HideInInspector]
+    [HideInInspector]
    public GameObject bola;
    [Range(500,5000)]
    public int escalaDaEsfera = 2000;
@@ -50,6 +50,10 @@ public class DiaENoite : MonoBehaviour {
    private Light componenteLuz;
    private bool ativou1x;
    private float intensidadeCor;
+   public GameObject Lua;
+	public int noite;
+
+
 
    void Awake(){
       Nuvens.bola = new GameObject("EsferaNuvens");
@@ -61,6 +65,10 @@ public class DiaENoite : MonoBehaviour {
       Nuvens.bola.transform.localScale = new Vector3 (20*Nuvens.escalaDaEsfera, Nuvens.escalaDaEsfera, 20*Nuvens.escalaDaEsfera);
       Nuvens.bola.GetComponent<Renderer> ().material.shader = Nuvens.ShaderDoObjeto;
       Nuvens.bola.GetComponent<Renderer> ().material.SetTexture ("_Textura", Nuvens.TexturaShader);
+	  
+
+	
+	
    }
 
    void Start(){
@@ -72,6 +80,8 @@ public class DiaENoite : MonoBehaviour {
       RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Flat;
       RenderSettings.ambientSkyColor = componenteLuz.color;
       intensidadeCor = Mathf.Clamp ((transform.eulerAngles.x / 90), 0, 1);
+		Lua.SetActive(false);
+
    }
 
    void Update () {
@@ -99,9 +109,15 @@ public class DiaENoite : MonoBehaviour {
       if (RenderSettings.ambientIntensity < ConfigsDoDia.HoraLuzesNoite && ativou1x == false) {
          AtivarLuzes (true);
          ativou1x = true;
+		 Lua.SetActive(true);
+			noite = 1;
+		Nuvens.bola.GetComponent<Renderer> ().material.SetInt("_noite", noite);
       } else if (RenderSettings.ambientIntensity >= ConfigsDoDia.HoraLuzesNoite) {
          AtivarLuzes (false);
          ativou1x = false;
+         Lua.SetActive (false);
+			noite = 0;
+		Nuvens.bola.GetComponent<Renderer> ().material.SetInt("_noite", noite);
       }
    }
 
