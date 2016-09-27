@@ -18,7 +18,7 @@ public class PathFindingXFreeRoam : MonoBehaviour {
 	
 
 	void Update () {
-		if (Input.GetKeyUp (KeyCode.P)) {
+		if (Input.GetKeyUp (KeyCode.I)) {
 			controle.enabled = !controle.enabled;
 			script.enabled = !script.enabled;
 			navmesh.enabled = !navmesh.enabled;
