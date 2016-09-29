@@ -3,20 +3,20 @@ using System.Collections;
 
 public class SwitchCameras : MonoBehaviour {
 
-	Camera cam1, cam2;
+	GameObject cam1, cam2;
 
 	 void Start() {
-	 	cam1 = GetComponent<Camera>();
-		cam2 = GetComponent<Camera>();
+		cam1 = GameObject.FindGameObjectWithTag("MainCamera");
+		cam2 = GameObject.FindGameObjectWithTag("Cameras");
 
-		cam1.enabled = true;
-    	cam2.enabled = false;
+		cam1.SetActive(true);
+		cam2.SetActive(false);
 	 }
 
 	 void Update() {
 	     if (Input.GetKeyDown(KeyCode.C)) {
-	         cam1.enabled = !cam1.enabled;
-	         cam2.enabled = !cam2.enabled;
+			cam1.SetActive(false);
+			cam2.SetActive(true);
 	     }
 	 }
  }
