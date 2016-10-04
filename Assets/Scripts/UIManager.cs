@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour {
 				showPaused ();
 			}
 			 else if (Time.timeScale == 0){
-				Debug.Log ("high");
+				//Debug.Log ("high");
 				Time.timeScale = 1;
 
 				DisableMouseLook (false);

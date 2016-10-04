@@ -88,7 +88,7 @@ public class DiaENoite : MonoBehaviour {
       if (Jogador != null) {
          Nuvens.bola.transform.position = Jogador.transform.position;
       }
-      Debug.Log (transform.eulerAngles.x);
+      //Debug.Log (transform.eulerAngles.x);
       SetarShaderUpdate ();
       if (ConfigsDoDia.DuracaoDiaMin > 0) {
          transform.Rotate ((6.0f / ConfigsDoDia.DuracaoDiaMin) * Time.deltaTime, 0, 0);
