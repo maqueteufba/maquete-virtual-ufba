@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ShowOnPause
   - Cameras
+  - AutoNav
   layers:
   - Default
   - TransparentFX
