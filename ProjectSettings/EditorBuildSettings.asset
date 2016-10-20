@@ -13,7 +13,9 @@ EditorBuildSettings:
     path: Assets/cenas_teste/cena_teste_residencia.unity
   - enabled: 0
     path: Assets/cenas_teste/cena_teste_biblio_setorial.unity
-  - enabled: 1
-    path: Assets/cenas_teste/cena_teste_casinha_fau.unity
   - enabled: 0
+    path: Assets/cenas_teste/cena_teste_casinha_fau.unity
+  - enabled: 1
     path: Assets/cenas_teste/cena_teste_poli.unity
+  - enabled: 0
+    path: Assets/cenas_teste/cena_teste_poli_otm.unity
