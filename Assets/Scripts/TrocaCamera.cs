@@ -16,14 +16,13 @@ public class TrocaCamera : MonoBehaviour {
 
 			cam1.enabled = !cam1.enabled;
 
-			//liga ou desliga o cursor
+			/*//liga ou desliga o cursor
 			if(cam1.enabled == false)
 				Cursor.visible = true;
 			else
-				Cursor.visible = false;
+				Cursor.visible = false;//*/
 
 			cam2.enabled = !cam2.enabled;
-			//transform.position = new Vector3(2708.997, -584.0, -3398.0);
 
 		}
 	}

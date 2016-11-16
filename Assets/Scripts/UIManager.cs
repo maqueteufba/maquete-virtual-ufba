@@ -79,5 +79,5 @@ public class UIManager : MonoBehaviour {
 	public void LoadLevel(string level){
 		Application.LoadLevel(level);
 	}
-		
+
 }
