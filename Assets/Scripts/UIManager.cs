@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class UIManager : MonoBehaviour {
 
 	GameObject[] pauseObjects;
-	private GameObject g;
+	public GameObject fps;
 
 
 	void Start () {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
-		g = GameObject.Find ("FPSController");
 
 		hidePaused();
 	}
@@ -22,27 +22,16 @@ public class UIManager : MonoBehaviour {
 			if (Time.timeScale == 1) {
 				Time.timeScale = 0;
 
-				DisableMouseLook (true);
-
 				showPaused ();
 			}
 			 else if (Time.timeScale == 0){
 				//Debug.Log ("high");
 				Time.timeScale = 1;
 
-				DisableMouseLook (false);
-
 				hidePaused();
 			}
 		}
 	}
-
-	private void DisableMouseLook(bool enable){ 
-
-		//g.GetComponent<Camera>().
-
-	}
-
 
 	//Reloads the Level
 	public void Reload(){
@@ -55,6 +44,7 @@ public class UIManager : MonoBehaviour {
 		{
 			Time.timeScale = 0;
 			showPaused();
+
 		} else if (Time.timeScale == 0){
 			Time.timeScale = 1;
 			hidePaused();
@@ -63,6 +53,8 @@ public class UIManager : MonoBehaviour {
 
 	//shows objects with ShowOnPause tag
 	public void showPaused(){
+		fps.GetComponent<FirstPersonController> ().enabled = false;
+
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(true);
 		}
@@ -70,6 +62,8 @@ public class UIManager : MonoBehaviour {
 
 	//hides objects with ShowOnPause tag
 	public void hidePaused(){
+		fps.GetComponent<FirstPersonController> ().enabled = true;
+			
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(false);
 		}
