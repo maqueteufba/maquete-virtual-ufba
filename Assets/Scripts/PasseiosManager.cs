@@ -4,24 +4,43 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PasseiosManager : MonoBehaviour {
 	public Animator animator;
-	//public enum Anim {idle, FARM, POLI};
+	public UIManager uimanager;
 	public GameObject fps;
 
-	//private Anim passeioativo;
+	private GameObject[] botoesPasseios;
 
 	void Start () {
-		//passeioativo = Anim.idle;
+		botoesPasseios = GameObject.FindGameObjectsWithTag("BotoesPasseios");
+
+		hideBotoesPasseios ();
 	}
 	
 	public void ChangeAnim(string anim){
-		if (anim.Equals("idle"))
-			animator.SetTrigger (anim);
-		
-		else if (anim.Equals("farmacia")) {
-			//Debug.Log ("tryingg");
-			fps.GetComponent<FirstPersonController> ().enabled = false;
+		fps.GetComponent<FirstPersonController> ().enabled = false;
 
+		hideBotoesPasseios ();
+
+		uimanager.fundo.SetActive(false);
+		Time.timeScale = 1;
+
+		if (anim.Equals ("farmacia")) {
 			animator.SetTrigger (anim);
+		} else if (anim.Equals ("poli")) {
+			uimanager.fundo.SetActive(false);
+			animator.SetTrigger (anim);
+		}
+	}
+
+	public void hideBotoesPasseios(){
+		foreach(GameObject g in botoesPasseios){
+			g.SetActive(false);
+		}
+	}
+
+	public void showBotoesPasseios(){
+		animator.enabled = true;
+		foreach(GameObject g in botoesPasseios){
+			g.SetActive(true);
 		}
 	}
 }

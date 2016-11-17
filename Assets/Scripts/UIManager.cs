@@ -5,13 +5,16 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class UIManager : MonoBehaviour {
 
 	GameObject[] pauseObjects;
+
 	public GameObject fps;
+	public GameObject fundo;
 
 
 	void Start () {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 
+		fundo.SetActive (false);
 		hidePaused();
 	}
 
@@ -22,12 +25,14 @@ public class UIManager : MonoBehaviour {
 			if (Time.timeScale == 1) {
 				Time.timeScale = 0;
 
+				fundo.SetActive (true);
 				showPaused ();
 			}
 			 else if (Time.timeScale == 0){
 				//Debug.Log ("high");
 				Time.timeScale = 1;
 
+				fundo.SetActive (false);
 				hidePaused();
 			}
 		}
@@ -47,6 +52,8 @@ public class UIManager : MonoBehaviour {
 
 		} else if (Time.timeScale == 0){
 			Time.timeScale = 1;
+
+			fundo.SetActive (false);
 			hidePaused();
 		}
 	}

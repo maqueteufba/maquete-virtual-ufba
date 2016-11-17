@@ -16,7 +16,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float smoothTime = 5f;
         public bool lockCursor = true;
 
-		public bool active = true;
+		//public bool active = true; //used to disable mouselook, did not work for i could not access variable from another script
 
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
@@ -24,8 +24,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void Init(Transform character, Transform camera)
         {
-			if (!active)
-				return;
+			//if (!active)
+				//return;
 
 			m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
