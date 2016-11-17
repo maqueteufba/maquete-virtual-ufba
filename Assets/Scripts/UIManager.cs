@@ -4,18 +4,20 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class UIManager : MonoBehaviour {
 
-	GameObject[] pauseObjects;
-
 	public GameObject fps;
 	public GameObject fundo, botaoPlay;
 
+	public Animator animator;
+
+	private GameObject[] botoesPasseios;
+	GameObject[] pauseObjects;
 
 	void Start () {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+		botoesPasseios = GameObject.FindGameObjectsWithTag("BotoesPasseios");
 
-		showCommom (false);
-		hidePaused();
+		hideAll ();
 	}
 
 
@@ -30,12 +32,10 @@ public class UIManager : MonoBehaviour {
 				showPaused ();
 			}
 			 else if (Time.timeScale == 0){
-				//Debug.Log ("high");
 				Time.timeScale = 1;
 				fps.GetComponent<FirstPersonController> ().enabled = true;
 
-				showCommom (false);
-				hidePaused();
+				hideAll();
 			}
 		}
 	}
@@ -59,8 +59,7 @@ public class UIManager : MonoBehaviour {
 			Time.timeScale = 1;
 			fps.GetComponent<FirstPersonController> ().enabled = true;
 
-			showCommom (false);
-			hidePaused();
+			hideAll();
 		}
 	}
 
@@ -84,9 +83,50 @@ public class UIManager : MonoBehaviour {
 		botaoPlay.SetActive (active);
 	}
 
+	public void hideAll(){
+		hidePaused ();
+		showCommom (false);
+		hideBotoesPasseios();
+	}
+
 	//loads inputted level
 	public void LoadLevel(string level){
 		Application.LoadLevel(level);
+	}
+
+	public void ChangeAnim(string anim){
+		fps.GetComponent<FirstPersonController> ().enabled = false;
+
+		hideBotoesPasseios ();
+
+		showCommom (false);
+		Time.timeScale = 1;
+
+		if (anim.Equals ("farmacia")) {
+			animator.SetTrigger (anim);
+
+		} else if (anim.Equals ("poli")) {
+			animator.SetTrigger (anim);
+		}
+	}
+
+	public void hideBotoesPasseios(){
+		foreach(GameObject g in botoesPasseios){
+			g.SetActive(false);
+		}
+	}
+
+	public void showBotoesPasseios(){
+		animator.enabled = true;
+		foreach(GameObject g in botoesPasseios){
+			g.SetActive(true);
+		}
+	}
+
+	public void sairAnimacao(){
+		Debug.Log ("animacao finalizada");
+		animator.enabled = false;
+		pauseControl ();
 	}
 
 }
