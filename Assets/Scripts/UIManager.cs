@@ -7,14 +7,14 @@ public class UIManager : MonoBehaviour {
 	GameObject[] pauseObjects;
 
 	public GameObject fps;
-	public GameObject fundo;
+	public GameObject fundo, botaoPlay;
 
 
 	void Start () {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 
-		fundo.SetActive (false);
+		showCommom (false);
 		hidePaused();
 	}
 
@@ -24,15 +24,17 @@ public class UIManager : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.Escape)) {
 			if (Time.timeScale == 1) {
 				Time.timeScale = 0;
+				fps.GetComponent<FirstPersonController> ().enabled = false;
 
-				fundo.SetActive (true);
+				showCommom (true);
 				showPaused ();
 			}
 			 else if (Time.timeScale == 0){
 				//Debug.Log ("high");
 				Time.timeScale = 1;
+				fps.GetComponent<FirstPersonController> ().enabled = true;
 
-				fundo.SetActive (false);
+				showCommom (false);
 				hidePaused();
 			}
 		}
@@ -48,19 +50,22 @@ public class UIManager : MonoBehaviour {
 		if(Time.timeScale == 1)
 		{
 			Time.timeScale = 0;
+			fps.GetComponent<FirstPersonController> ().enabled = false;
+
+			showCommom (true);
 			showPaused();
 
 		} else if (Time.timeScale == 0){
 			Time.timeScale = 1;
+			fps.GetComponent<FirstPersonController> ().enabled = true;
 
-			fundo.SetActive (false);
+			showCommom (false);
 			hidePaused();
 		}
 	}
 
 	//shows objects with ShowOnPause tag
 	public void showPaused(){
-		fps.GetComponent<FirstPersonController> ().enabled = false;
 
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(true);
@@ -68,12 +73,15 @@ public class UIManager : MonoBehaviour {
 	}
 
 	//hides objects with ShowOnPause tag
-	public void hidePaused(){
-		fps.GetComponent<FirstPersonController> ().enabled = true;
-			
+	public void hidePaused(){			
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(false);
 		}
+	}
+
+	public void showCommom(bool active){
+		fundo.SetActive (active);
+		botaoPlay.SetActive (active);
 	}
 
 	//loads inputted level

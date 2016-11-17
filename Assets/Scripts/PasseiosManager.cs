@@ -8,25 +8,30 @@ public class PasseiosManager : MonoBehaviour {
 	public GameObject fps;
 
 	private GameObject[] botoesPasseios;
+	private Transform posicaoinicial;  
 
 	void Start () {
 		botoesPasseios = GameObject.FindGameObjectsWithTag("BotoesPasseios");
 
 		hideBotoesPasseios ();
+
+		posicaoinicial = fps.camera.transform;
 	}
 	
 	public void ChangeAnim(string anim){
 		fps.GetComponent<FirstPersonController> ().enabled = false;
+		fps.transform.position = posicaoinicial.position;
+		fps.transform.rotation = posicaoinicial.rotation;
 
 		hideBotoesPasseios ();
 
-		uimanager.fundo.SetActive(false);
+		uimanager.showCommom (false);
 		Time.timeScale = 1;
 
 		if (anim.Equals ("farmacia")) {
 			animator.SetTrigger (anim);
+
 		} else if (anim.Equals ("poli")) {
-			uimanager.fundo.SetActive(false);
 			animator.SetTrigger (anim);
 		}
 	}
