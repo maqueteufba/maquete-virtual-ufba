@@ -6,8 +6,8 @@ TagManager:
   tags:
   - ShowOnPause
   - Cameras
-  - AutoNav
   - BotoesPasseios
+  - Botoes1aTela
   layers:
   - Default
   - TransparentFX

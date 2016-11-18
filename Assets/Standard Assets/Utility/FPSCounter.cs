@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace UnityStandardAssets.Utility
 {
     [RequireComponent(typeof (Text))]
-    public class FPSCounter : MonoBehaviour
+    public class fpscamounter : MonoBehaviour
     {
         const float fpsMeasurePeriod = 0.5f;
         private int m_FpsAccumulator = 0;

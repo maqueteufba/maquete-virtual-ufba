@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -6,26 +6,27 @@ public class UIManager : MonoBehaviour {
 
 	public GameObject fps;
 	public GameObject fundo, botaoPlay;
-	public Camera fpsc, cinema;
-
+	public Camera fpscam, cinema;
 	public Animator animator;
 
-	private GameObject[] botoesPasseios;
-	GameObject[] pauseObjects;
+	public GameObject[] botoesPasseios, pauseObjects;
+	private enum State {ANIM, PLAY, PAUSE};
+	private State activeState;
 
 	void Start () {
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		botoesPasseios = GameObject.FindGameObjectsWithTag("BotoesPasseios");
 
-		fpsc.enabled = true;
+		fpscam.enabled = true;
 		cinema.enabled = false;
-
 		Time.timeScale = 0;
 		fps.GetComponent<FirstPersonController> ().enabled = false;
 
-		hideBotoesPasseios ();
-		showCommom (true);
+		hideBotoesPasseios();
+		PauseLayoutVisible (true);
 		showPaused ();
+
+		activeState = State.PAUSE;
 	}
 
 
@@ -36,12 +37,16 @@ public class UIManager : MonoBehaviour {
 				Time.timeScale = 0;
 				fps.GetComponent<FirstPersonController> ().enabled = false;
 
-				showCommom (true);
+				PauseLayoutVisible (true);
 				showPaused ();
+
+				activeState = State.PAUSE;
 			}
 			 else if (Time.timeScale == 0){
 				Time.timeScale = 1;
-				fps.GetComponent<FirstPersonController> ().enabled = true;
+
+				//if(activeState == State.PLAY)
+					fps.GetComponent<FirstPersonController> ().enabled = true;
 
 				hideAll();
 			}
@@ -60,12 +65,14 @@ public class UIManager : MonoBehaviour {
 			Time.timeScale = 0;
 			fps.GetComponent<FirstPersonController> ().enabled = false;
 
-			showCommom (true);
+			PauseLayoutVisible (true);
 			showPaused();
 
 		} else if (Time.timeScale == 0){
 			Time.timeScale = 1;
-			fps.GetComponent<FirstPersonController> ().enabled = true;
+
+			//if(State.PLAY || State.PAUSE)
+				fps.GetComponent<FirstPersonController> ().enabled = true;
 
 			hideAll();
 		}
@@ -86,14 +93,14 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 
-	public void showCommom(bool active){
-		fundo.SetActive (active);
-		botaoPlay.SetActive (active);
+	public void PauseLayoutVisible(bool visible){
+		fundo.SetActive (visible);
+		botaoPlay.SetActive (visible);
 	}
 
 	public void hideAll(){
 		hidePaused ();
-		showCommom (false);
+		PauseLayoutVisible (false);
 		hideBotoesPasseios();
 	}
 
@@ -104,12 +111,10 @@ public class UIManager : MonoBehaviour {
 
 	public void ChangeAnim(string anim){
 		fps.GetComponent<FirstPersonController> ().enabled = false;
-
 		hideBotoesPasseios ();
+		PauseLayoutVisible (false);
 
-		showCommom (false);
 		Time.timeScale = 1;
-
 		TrocaCamera();
 
 		if (anim.Equals ("farmacia")) {
@@ -129,6 +134,7 @@ public class UIManager : MonoBehaviour {
 	public void showBotoesPasseios(){
 		//ATIVA COMPONENTE ANIMATOR!!!!!!!!!!
 		animator.enabled = true;
+		//ATIVA BOTOES DE PASSEIOS DISPONIVEIS
 		foreach(GameObject g in botoesPasseios){
 			g.SetActive(true);
 		}
@@ -136,12 +142,16 @@ public class UIManager : MonoBehaviour {
 
 	public void sairAnimacao(){
 		//Debug.Log ("animacao finalizada");
+		TrocaCamera();
+
 		animator.enabled = false;
+
 		pauseControl ();
 	}
 
 	public void TrocaCamera(){
-		fpsc.enabled = !fpsc.enabled;
+		fpscam.enabled = !fpscam.enabled;
 		cinema.enabled = !cinema.enabled;
 	}
 }
+*/

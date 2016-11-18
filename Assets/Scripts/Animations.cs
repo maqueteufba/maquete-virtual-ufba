@@ -3,14 +3,13 @@ using System.Collections;
 
 public class Animations : MonoBehaviour {
 
-	public UIManager uiManager;
+	public PauseMenu pause;
 
 	void Start(){
 		
 	}
 		
 	public void SairAnim(){
-		uiManager.TrocaCamera ();
-		uiManager.sairAnimacao ();
+		pause.sairAnimacao ();
 	}
 }
