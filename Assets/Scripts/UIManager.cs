@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour {
 
 	public GameObject fps;
 	public GameObject fundo, botaoPlay;
+	public Camera fpsc, cinema;
 
 	public Animator animator;
 
@@ -15,6 +16,9 @@ public class UIManager : MonoBehaviour {
 	void Start () {
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		botoesPasseios = GameObject.FindGameObjectsWithTag("BotoesPasseios");
+
+		fpsc.enabled = true;
+		cinema.enabled = false;
 
 		Time.timeScale = 0;
 		fps.GetComponent<FirstPersonController> ().enabled = false;
@@ -106,6 +110,8 @@ public class UIManager : MonoBehaviour {
 		showCommom (false);
 		Time.timeScale = 1;
 
+		TrocaCamera();
+
 		if (anim.Equals ("farmacia")) {
 			animator.SetTrigger (anim);
 
@@ -134,4 +140,8 @@ public class UIManager : MonoBehaviour {
 		pauseControl ();
 	}
 
+	public void TrocaCamera(){
+		fpsc.enabled = !fpsc.enabled;
+		cinema.enabled = !cinema.enabled;
+	}
 }
