@@ -13,11 +13,15 @@ public class UIManager : MonoBehaviour {
 	GameObject[] pauseObjects;
 
 	void Start () {
-		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
 		botoesPasseios = GameObject.FindGameObjectsWithTag("BotoesPasseios");
 
-		hideAll ();
+		Time.timeScale = 0;
+		fps.GetComponent<FirstPersonController> ().enabled = false;
+
+		hideBotoesPasseios ();
+		showCommom (true);
+		showPaused ();
 	}
 
 
@@ -117,6 +121,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void showBotoesPasseios(){
+		//ATIVA COMPONENTE ANIMATOR!!!!!!!!!!
 		animator.enabled = true;
 		foreach(GameObject g in botoesPasseios){
 			g.SetActive(true);
@@ -124,7 +129,7 @@ public class UIManager : MonoBehaviour {
 	}
 
 	public void sairAnimacao(){
-		Debug.Log ("animacao finalizada");
+		//Debug.Log ("animacao finalizada");
 		animator.enabled = false;
 		pauseControl ();
 	}
