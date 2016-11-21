@@ -7,8 +7,9 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject fps;//para habilitar o controle do jogador
 	public GameObject botoesPasseios, pauseComponents, primeiraTela; //conjunto de botoes
 	public Camera fpscam, cinema; //trocar de cameras
-	private Animator animator; //ativar a animacao da camera cinema
+	public GameObject DebugButton;
 
+	private Animator animator; //ativar a animacao da camera cinema
 	private enum State {ANIM, PLAY};
 	private State activeState;
 
@@ -37,8 +38,6 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void Pause(){
-		Debug.Log (activeState.ToString());
-
 		Time.timeScale = 0;
 		fps.GetComponent<FirstPersonController> ().enabled = false;
 
@@ -102,6 +101,7 @@ public class PauseMenu : MonoBehaviour {
 		TrocaCamera();
 		activeState = State.PLAY;
 
+		animator.SetTrigger ("idle");
 		animator.enabled = false;
 		Pause ();
 	}
@@ -121,4 +121,8 @@ public class PauseMenu : MonoBehaviour {
 		Application.LoadLevel(level);
 	}
 
+	public void Debugging(){
+		Debug.Log (activeState.ToString());
+		//Debug.Log ("");
+	}
 }
