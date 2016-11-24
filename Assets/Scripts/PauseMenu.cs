@@ -7,8 +7,8 @@ public class PauseMenu : MonoBehaviour {
 	public GameObject fps;//para habilitar o controle do jogador
 	public GameObject botoesPasseios, pauseComponents, primeiraTela; //conjunto de botoes
 	public Camera fpscam, cinema; //trocar de cameras
-	public GameObject DebugButton;
-
+	public GameObject DebugButton,ErroPasseio;
+	
 	private Animator animator; //ativar a animacao da camera cinema
 	private enum State {ANIM, PLAY};
 	private State activeState;
@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour {
 		animator = cinema.GetComponent<Animator> ();
 		animator.enabled = false;
 
+		ErroPasseio.SetActive (false);
 		botoesPasseios.SetActive(false);
 		Pause ();
 	}
@@ -55,9 +56,6 @@ public class PauseMenu : MonoBehaviour {
 			Resumir ();
 		}
 
-		
-
-
 	}
 
 	public void Resumir(){
@@ -70,8 +68,14 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void SegundaTela(){
-		primeiraTela.SetActive(false);
-		botoesPasseios.SetActive (true);
+		if (activeState != State.ANIM) {
+			primeiraTela.SetActive (false);
+			botoesPasseios.SetActive (true);
+		}
+		else{
+			ErroPasseio.SetActive (true);
+			return;
+		}
 	}
 
 	public void ChangeAnim(string anim){
@@ -91,6 +95,8 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void hideAll(){
+		ErroPasseio.SetActive (false);
+
 		pauseComponents.SetActive (false);
 		primeiraTela.SetActive (false);
 		botoesPasseios.SetActive (false);
@@ -121,8 +127,8 @@ public class PauseMenu : MonoBehaviour {
 		Application.LoadLevel(level);
 	}
 
-	public void Debugging(){
+	public void ShowDebug(){
 		Debug.Log (activeState.ToString());
-		//Debug.Log ("");
+		Debug.Log (animator.GetCurrentAnimatorStateInfo(0).ToString());
 	}
 }
