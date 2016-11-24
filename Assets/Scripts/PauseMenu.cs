@@ -21,6 +21,9 @@ public class PauseMenu : MonoBehaviour {
 		animator = cinema.GetComponent<Animator> ();
 		animator.enabled = false;
 
+		//Descomente a proxima linha para ativar o botao debug
+		DebugButton.SetActive (false);
+
 		ErroPasseio.SetActive (false);
 		botoesPasseios.SetActive(false);
 		Pause ();
