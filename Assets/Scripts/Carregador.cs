@@ -6,7 +6,7 @@ public class Carregador : MonoBehaviour {
 
 	private GameObject objeto = null;
 	public string URLDoBundle;
-	public string NomeDoAsset;
+	public string NomeDoAsset = "";
 
 	IEnumerator Download(){
 		while (!Caching.ready)
@@ -27,10 +27,10 @@ public class Carregador : MonoBehaviour {
 	void OnTriggerEnter(Collider outro){
 		if (outro.gameObject.tag == "Player") {
 			if (objeto == null) {
-				//StartCoroutine (Download ());
+				StartCoroutine (Download ());
 				Debug.Log("baixo");
 			} else {
-				outro.gameObject.SetActive(true);
+				objeto.SetActive(true);
 				Debug.Log("ativo");
 			}
 		}
@@ -38,7 +38,7 @@ public class Carregador : MonoBehaviour {
 
 	void OnTriggerExit(Collider outro){
 		if ((objeto != null) && (outro.gameObject.tag == "Player")) {
-			outro.gameObject.SetActive(false);
+			objeto.SetActive(false);
 			Debug.Log("desativo");
 		}
 	}

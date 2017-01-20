@@ -1,0 +1,46 @@
+ManifestFileVersion: 0
+CRC: 2085721145
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c63894d4e81cb35167da1141787f6682
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a693a6b299625d232fb419b81e97ed6f
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+Assets:
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/Polished_Concrete_New_2.mat
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/Polished_Concrete_Old_0.mat
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/PAFIII__Portao_lateral.jpg
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/PAFIII_entrada_latDir.png
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/Polished_Concrete_Old_1.mat
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/PAFIII_esq_T_grupoJanelas.mat
+- Assets/Prefabs/PAF III - SIMPLIFICADO.prefab
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/PAFIII_LatDir_JanelasSup_3.mat
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/PAFIII_varanda_centro.png
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/PAFIII_LatDir_JanelasSup.mat
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/PAFIII_fundo_cobogo.mat
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/Materials/PAFIII_esq_T_grupoJanelas_4.mat
+- Assets/mesh e predios/PAF III - SIMPLIFICADO/PAFIII_fundo_T_ArteDireita.png
+Dependencies: []

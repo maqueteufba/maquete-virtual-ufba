@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f28c5d8845c704ead6394d37684066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  URLDoBundle: 
-  NomeDoAsset: 
+  URLDoBundle: file://C:\Users\EliteDesk\Documents\GitHub\maquete-virtual-ufba\Assets\AssetBundles\pafiii
+  NomeDoAsset: PAF III - SIMPLIFICADO
 --- !u!1 &1096857065
 GameObject:
   m_ObjectHideFlags: 0
