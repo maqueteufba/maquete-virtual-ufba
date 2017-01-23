@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 198218428}
   - component: {fileID: 198218432}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Loader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,8 +151,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 14.733348, y: 2.5635922, z: 34.110767}
+  m_Center: {x: 0.05351906, y: -0.781796, z: 4.5166802}
 --- !u!33 &198218430
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 198218427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 533.61017, y: 27.7, z: 1400.8118}
-  m_LocalScale: {x: 41.546227, y: 30.910103, z: 18.41448}
+  m_LocalScale: {x: 7.970519, y: 6.850334, z: 3.5957751}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f28c5d8845c704ead6394d37684066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  URLDoBundle: file://C:\Users\EliteDesk\Documents\GitHub\maquete-virtual-ufba\Assets\AssetBundles\pafiii
+  URLDoBundle: ftp://maquete@www.maquete.ufba.br/maquete.ufba.br/pafiii
   NomeDoAsset: PAF III - SIMPLIFICADO
 --- !u!1 &1096857065
 GameObject:
@@ -266,7 +266,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 497.1
+      value: 536.7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.y
@@ -274,7 +274,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1425.6
+      value: 1328.2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
       propertyPath: m_LocalRotation.x

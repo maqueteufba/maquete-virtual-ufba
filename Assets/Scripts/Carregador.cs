@@ -11,7 +11,7 @@ public class Carregador : MonoBehaviour {
 	IEnumerator Download(){
 		while (!Caching.ready)
 			yield return null;
-		using (WWW www = WWW.LoadFromCacheOrDownload (URLDoBundle, 0)) {
+		using (WWW www = new WWW(URLDoBundle)/*WWW.LoadFromCacheOrDownload (URLDoBundle, 0)*/) {
 			yield return www;
 			if (www.error != null)
 				throw new UnityException ("O Download de " + NomeDoAsset + " falhou!\n" + www.error);
