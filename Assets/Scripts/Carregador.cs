@@ -6,12 +6,12 @@ public class Carregador : MonoBehaviour {
 
 	private GameObject objeto = null;
 	public string URLDoBundle;
-	public string NomeDoAsset = "";
+	public string NomeDoAsset;
 
 	IEnumerator Download(){
 		while (!Caching.ready)
 			yield return null;
-		using (WWW www = new WWW(URLDoBundle)/*WWW.LoadFromCacheOrDownload (URLDoBundle, 0)*/) {
+		using (WWW www = WWW.LoadFromCacheOrDownload (URLDoBundle, 0)) {
 			yield return www;
 			if (www.error != null)
 				throw new UnityException ("O Download de " + NomeDoAsset + " falhou!\n" + www.error);
@@ -25,14 +25,16 @@ public class Carregador : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider outro){
-		if (outro.gameObject.tag == "Player") {
-			if (objeto == null) {
-				StartCoroutine (Download ());
-				Debug.Log("baixo");
-			} else {
-				objeto.SetActive(true);
-				Debug.Log("ativo");
-			}
+		if ((outro.gameObject.tag == "Player") && (objeto == null)) {
+			StartCoroutine (Download ());
+			Debug.Log("baixo");
+		}
+	}
+
+	void OnTriggerStay(Collider outro){
+		if((objeto != null) && (outro.gameObject.tag == "Player")){
+			objeto.SetActive(true);
+			Debug.Log("ativo");
 		}
 	}
 
